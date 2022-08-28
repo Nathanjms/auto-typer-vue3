@@ -11,10 +11,6 @@ export default defineComponent({
         return regex.test(value);
       },
     },
-    customCursorStyling: {
-      type: Object,
-      default: () => {},
-    },
     beginningWord: {
       type: String,
       default: "",
@@ -77,7 +73,7 @@ export default defineComponent({
   },
   data() {
     return {
-      currentText: this.beginningWord,
+      currentText: "",
       offset: this.beginningWord.length,
       textFeed: [],
     };
@@ -91,13 +87,13 @@ export default defineComponent({
     delay(ms) {
       return new Promise((resolve) => setTimeout(resolve, ms));
     },
-    begin() {
+    async begin() {
       if (typeof this.text === "string") {
         this.textFeed = [this.text];
       } else {
         this.textFeed = [...this.text];
       }
-      this.textFeed.map((word) => this.beginningWord + word);
+      await this.delay(this.startDelay);
       this.autoType();
     },
     async autoType() {
@@ -129,7 +125,7 @@ export default defineComponent({
 
 <template>
   <component class="auto-typer-vue" :is="componentTag"
-    >{{ currentText }}
+    >{{ beginningWord }}{{ currentText }}
   </component>
 </template>
 
