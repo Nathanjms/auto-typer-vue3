@@ -1,10 +1,6 @@
-/// <reference types="vitest" />
-/// <reference types="vite/client" />
-
 import dts from 'vite-plugin-dts';
 import path from 'path';
 import Vue from '@vitejs/plugin-vue';
-import vueJsx from '@vitejs/plugin-vue-jsx';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
@@ -35,7 +31,6 @@ export default defineConfig({
     Vue({
       // reactivityTransform: true,
     }),
-    vueJsx(),
     // https://www.npmjs.com/package/vite-plugin-dts
     dts({
       include: 'src',
@@ -45,13 +40,4 @@ export default defineConfig({
       },
     }),
   ],
-  // https://github.com/vitest-dev/vitest
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: ['./setupTests.ts'],
-    transformMode: {
-      web: [/.[tj]sx$/],
-    },
-  },
 });
