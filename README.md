@@ -18,6 +18,8 @@ Install Auto Typer Vue3 with npm
 npm install auto-typer-vue3
 ```
 
+Then import the module and css file into your Vue component (see usage/example below).
+
 ## Props
 
 | Prop                    | Type                     | Default | Description                                                                                                                      | Validation                                                                              |
@@ -35,16 +37,26 @@ npm install auto-typer-vue3
 
 ## Usage/Example
 
-```javascript
-<script setup lang="ts">
-import { AutoTyperVue } from "auto-typer-vue";
-</script>
-```
-
 ```vue
+<script setup>
+import { AutoTyperVue } from "auto-typer-vue";
+
+let text = [
+  'This is a demo.',
+  'And this is another Demo!'
+];
+</script>
+
 <template>
-  <AutoTyperVue componentTag="h1" :text="['This is a demo.', 'And this is another Demo!']" />
+  <AutoTyperVue 
+    componentTag="h1" 
+    :text="text"
+  />
 </template>
+
+<script scoped>
+@import "auto-typer-vue3/dist/style.css";
+</script>
 ```
 
 ## Development
