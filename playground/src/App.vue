@@ -1,11 +1,15 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import { AutoTyperVue } from "auto-typer-vue";
 </script>
 
 <template>
-  <AutoTyperVue componentTag="h1" :text="['This is a demo.', 'And this is another Demo!']" />
+  <AutoTyperVue
+    beginningWord="Hello!&nbsp;"
+    componentTag="h1"
+    :text="['This is a demo.', 'And this is another Demo!']"
+    :startDelay="1500"
+    :typingDelay="150"
+  />
 </template>
 
 <style scoped>
