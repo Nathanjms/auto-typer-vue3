@@ -8,6 +8,7 @@ import { AutoTyperVue } from "auto-typer-vue";
     componentTag="h1"
     :text="['This is a demo.', 'And this is another Demo!']"
     :startDelay="1500"
+    :typingDelay="150"
   />
 </template>
 
