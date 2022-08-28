@@ -7,8 +7,8 @@ A simple auto-typer, written in Vue3.
   <img src="https://img.shields.io/npm/dt/auto-typer-vue3" />
 </p>
 
-
-_Gif coming soon!_
+## Screenshot(s)
+![Screen Recording 2022-08-28 at 10 40 25](https://user-images.githubusercontent.com/64075030/187067804-a4d0a055-58a9-4d71-b0bd-d100591ba83a.gif)
 
 ## Installation
 
