@@ -7,12 +7,12 @@ let text = ["This is a demo.", "And this is another Demo!"];
 <template>
   <div class="grid place-items-center justify-center min-h-screen bg-slate-700">
     <AutoTyperVue
-      beginningWord="Hello!&nbsp;"
+      writtenBeginningWord="Hello!&nbsp;"
       componentTag="h1"
       :text="text"
       :startDelay="1500"
       :typingDelay="150"
-      class="text-gray-200"
+      class="text-2xl text-gray-200"
     />
   </div>
 </template>
