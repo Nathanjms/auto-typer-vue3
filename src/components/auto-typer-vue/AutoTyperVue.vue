@@ -15,6 +15,10 @@ export default defineComponent({
       type: String,
       default: "",
     },
+    writtenBeginningWord: {
+      type: String,
+      default: "",
+    },
     text: {
       type: [String, Array],
       required: true,
@@ -74,7 +78,7 @@ export default defineComponent({
   data() {
     return {
       currentText: "",
-      offset: this.beginningWord.length,
+      typedBeginningWord: "",
       textFeed: [],
     };
   },
@@ -94,7 +98,19 @@ export default defineComponent({
         this.textFeed = [...this.text];
       }
       await this.delay(this.startDelay);
+      await this.writeBeginningWord();
       this.autoType();
+    },
+    async writeBeginningWord() {
+      if (!this.writtenBeginningWord.length) {
+        // No word to write, stop here!
+        return;
+      }
+      for (let char of [...this.writtenBeginningWord]) {
+        this.typedBeginningWord += char;
+        await this.delay(this.typingDelay);
+      }
+      await this.delay(this.betweenWordDelay);
     },
     async autoType() {
       for (let currentWord of [...this.textFeed]) {
@@ -125,22 +141,6 @@ export default defineComponent({
 
 <template>
   <component class="auto-typer-vue" :is="componentTag"
-    >{{ beginningWord }}{{ currentText }}
+    >{{ beginningWord }}{{ typedBeginningWord }}{{ currentText }}
   </component>
 </template>
-
-<style lang="css" scoped>
-.auto-typer-vue::after {
-  content: "";
-  position: inline-block;
-  border: 1px solid white;
-  margin-left: 1px;
-  animation: cursor-blink 1.5s steps(2) infinite;
-}
-
-@keyframes cursor-blink {
-  0% {
-    opacity: 0;
-  }
-}
-</style>

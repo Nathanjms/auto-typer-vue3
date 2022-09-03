@@ -1,7 +1,7 @@
 {
   "name": "auto-typer-vue3",
-  "version": "0.0.4",
-  "description": "Autotyper made in Vue3.",
+  "version": "0.0.5",
+  "description": "A simple Autotyper for Vue 3, with some customisation options.",
   "keywords": [
     "vue3",
     "typer",
@@ -34,8 +34,12 @@
   ],
   "scripts": {
     "dev": "npm run dev -w playground",
+    "dev:pack": "npm run dev:usepack -w playground",
     "prepublishOnly": "npm run build:vite",
-    "build:vite": "vite build"
+    "build:vite": "vite build && npm run build:css",
+    "build:css": "npm run build:scss && npm run build:postcss && rimraf rf ./src/index.css",
+    "build:scss": "sass --no-source-map --style=compressed src/styles/main.scss src/index.css",
+    "build:postcss": "postcss src/index.css -o dist/index.css"
   },
   "devDependencies": {
     "@babel/core": "^7.18.13",
@@ -55,7 +59,14 @@
     "vite-plugin-windicss": "^1.8.7",
     "vitest": "^0.22.1",
     "vue-tsc": "^0.40.1",
-    "@types/node": "^18.7.13"
+    "@types/node": "^18.7.13",
+    "postcss": "^8.4.16",
+    "postcss-cli": "^10.0.0",
+    "postcss-loader": "^7.0.1",
+    "postcss-nested": "^5.0.6",
+    "postcss-scss": "^4.0.4",
+    "rimraf": "^3.0.2",
+    "sass": "^1.54.5"
   },
   "peerDependencies": {
     "vue": "^3.2.0"

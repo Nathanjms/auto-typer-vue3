@@ -22,19 +22,19 @@ Then import the module and css file into your Vue component (see usage/example b
 
 ## Props
 
-| Prop                    | Type                     | Default | Description                                                                                                                      | Validation                                                                              |
-| :---------------------- | :----------------------- | :------ | :------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------- |
-| `componentTag`          | `string`                 | 'span'  | The HTML tag that the element will be.                                                                                           | Currently accepts any of the following: `span`, `p`, `a`, `h*` (where * is any number). |
-| `beginningWord`         | `string`                 | `''`    | A string prepended to every text item. _If you would like to have a space at the end, I recommend using the `&nbsp;` character_. | N/A.                                                                                    |
-| `text`                  | `string \|array<string>` | `''`    | Either a string to be auto-typed, or an array of strings to be auto-typed.                                                       |                                                                                         |
-| `startDelay`            | `number`                 | `500`   | Time (ms) before the auto-typer begins.                                                                                          | Number >= 0.                                                                            |
-| `betweenWordDelay`      | `number`                 | `500`   | Time (ms) before the next `text` string is typed.                                                                                | Number >= 0.                                                                            |
-| `typingDelay`           | `number`                 | `300`   | Time (ms) between each character is typed.                                                                                       | Number >= 0.                                                                            |
-| `deletingDelay`         | `number`                 | `100`   | Time (ms) between each character is deleted after the text has been typed.                                                       | Number >= 0.                                                                            |
-| `waitBeforeDeleteDelay` | `number`                 | `500`   | Time (ms) after the text has been typed before deleting it begins.                                                               | Number >= 0.                                                                            |
-| `startByDefault`        | `bool`                   | `true`  | Whether to start the auto-typer by default. If set to false, the `begin()` method must be called manually.                       | Number >= 0.                                                                            |
-| `repeat`                | `bool`                   | `true`  | Whether to repeat the text once all of them have been typed.                                                                     | N/A.                                                                                    |  |
-
+| Prop                    | Type                     | Default | Description                                                                                                                                                               | Validation                                                                              |
+| :---------------------- | :----------------------- | :------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------- |
+| `componentTag`          | `string`                 | 'span'  | The HTML tag that the element will be.                                                                                                                                    | Currently accepts any of the following: `span`, `p`, `a`, `h*` (where * is any number). |
+| `beginningWord`         | `string`                 | `''`    | A string prepended to every text item. _If you would like to have a space at the end, I recommend using the `&nbsp;` character_.                                          | N/A.                                                                                    |
+| `writtenBeginningWord`  | `string`                 | `''`    | A word that will be typed when the auto-typer begins, and then will stay there. _If you would like to have a space at the end, I recommend using the `&nbsp;` character_. | N/A.                                                                                    |
+| `text`                  | `string \|array<string>` | `''`    | Either a string to be auto-typed, or an array of strings to be auto-typed.                                                                                                |                                                                                         |
+| `startDelay`            | `number`                 | `500`   | Time (ms) before the auto-typer begins.                                                                                                                                   | Number >= 0.                                                                            |
+| `betweenWordDelay`      | `number`                 | `500`   | Time (ms) before the next `text` string is typed.                                                                                                                         | Number >= 0.                                                                            |
+| `typingDelay`           | `number`                 | `300`   | Time (ms) between each character is typed.                                                                                                                                | Number >= 0.                                                                            |
+| `deletingDelay`         | `number`                 | `100`   | Time (ms) between each character is deleted after the text has been typed.                                                                                                | Number >= 0.                                                                            |
+| `waitBeforeDeleteDelay` | `number`                 | `500`   | Time (ms) after the text has been typed before deleting it begins.                                                                                                        | Number >= 0.                                                                            |
+| `startByDefault`        | `bool`                   | `true`  | Whether to start the auto-typer by default. If set to false, the `begin()` method must be called manually.                                                                | Number >= 0.                                                                            |
+| `repeat`                | `bool`                   | `true`  | Whether to repeat the text once all of them have been typed.                                                                                                              | N/A.                                                                                    |  |
 ## Usage/Example
 
 ```vue
@@ -55,7 +55,7 @@ let text = [
 </template>
 
 <script scoped>
-@import "auto-typer-vue3/dist/style.css";
+@import "auto-typer-vue3/dist/index.css";
 </script>
 ```
 
@@ -70,9 +70,17 @@ To launch this folder with Vite.
 
 The `App.vue` file can be modified to see changes in the browser, and navigating to `/src/components/auto-typer-vue/AutoTyperVue.vue` will update the changes on the browser for the Auto Typer.
 
+To test the packaged build, run:
+
+1. `npm pack`
+2. `npm run dev:pack`
+
+This will run a dev server for the `/dist` folder instead of the normal one.
+
 ## Future Plans
 
-- Add custom styling options the the cursor.
+- ~Add custom styling options the the cursor.~
+    - Can be done with the style area already (I think... let me know if this needs further testing.) 
 - Add a variable to allow a certain number of repeats, instead of just a boolean.
 - Handle whether to leave the final word on the screen once repeating has stopped.
 - ...any other suggestions will be considered, please leave an issue if you have any feature requests!
