@@ -13,11 +13,11 @@
     "esModuleInterop": true,
     "lib": ["ESNext", "DOM"],
     "skipLibCheck": true,
-    "types": ["vite/client", "vite-plugin-pages/client", "../global"],
+    "types": ["../global"],
     "paths": {
       "@/*": ["src/*"],
       "auto-typer-vue": ["../src"],
       "auto-typer-vue/*": ["../src/*"]
     }
-  },
+  }
 }

@@ -1,27 +1,18 @@
 <script setup lang="ts">
 import { AutoTyperVue } from "auto-typer-vue";
+
+let text = [
+  'This is a demo.',
+  'And this is another Demo!'
+];
 </script>
 
 <template>
   <AutoTyperVue
     beginningWord="Hello!&nbsp;"
     componentTag="h1"
-    :text="['This is a demo.', 'And this is another Demo!']"
+    :text="text"
     :startDelay="1500"
     :typingDelay="150"
   />
 </template>
-
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>

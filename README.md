@@ -55,7 +55,7 @@ let text = [
 </template>
 
 <script scoped>
-@import "auto-typer-vue3/dist/style.css";
+@import "auto-typer-vue3/dist/index.css";
 </script>
 ```
 
@@ -70,9 +70,17 @@ To launch this folder with Vite.
 
 The `App.vue` file can be modified to see changes in the browser, and navigating to `/src/components/auto-typer-vue/AutoTyperVue.vue` will update the changes on the browser for the Auto Typer.
 
+To test the packaged build, run:
+
+1. `npm pack`
+2. `npm run dev:pack`
+
+This will run a dev server for the `/dist` folder instead of the normal one.
+
 ## Future Plans
 
-- Add custom styling options the the cursor.
+- ~Add custom styling options the the cursor.~
+    - Can be done with the style area already (I think... let me know if this needs further testing.) 
 - Add a variable to allow a certain number of repeats, instead of just a boolean.
 - Handle whether to leave the final word on the screen once repeating has stopped.
 - ...any other suggestions will be considered, please leave an issue if you have any feature requests!

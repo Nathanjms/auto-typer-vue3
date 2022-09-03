@@ -128,19 +128,3 @@ export default defineComponent({
     >{{ beginningWord }}{{ currentText }}
   </component>
 </template>
-
-<style lang="css" scoped>
-.auto-typer-vue::after {
-  content: "";
-  position: inline-block;
-  border: 1px solid white;
-  margin-left: 1px;
-  animation: cursor-blink 1.5s steps(2) infinite;
-}
-
-@keyframes cursor-blink {
-  0% {
-    opacity: 0;
-  }
-}
-</style>
