@@ -55,7 +55,7 @@ let text = [
 </template>
 
 <script scoped>
-@import "auto-typer-vue3/dist/index.css";
+@import "auto-typer-vue3/dist/style.css";
 </script>
 ```
 

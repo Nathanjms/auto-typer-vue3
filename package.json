@@ -37,9 +37,9 @@
     "dev:pack": "npm run dev:usepack -w playground",
     "prepublishOnly": "npm run build:vite",
     "build:vite": "vite build && npm run build:css",
-    "build:css": "npm run build:scss && npm run build:postcss && rimraf rf ./src/index.css",
-    "build:scss": "sass --no-source-map --style=compressed src/styles/main.scss src/index.css",
-    "build:postcss": "postcss src/index.css -o dist/index.css"
+    "build:css": "npm run build:scss && npm run build:postcss && rimraf rf ./src/style.css",
+    "build:scss": "sass --no-source-map --style=compressed src/styles/main.scss src/style.css",
+    "build:postcss": "postcss src/style.css -o dist/style.css"
   },
   "devDependencies": {
     "@babel/core": "^7.18.13",
