@@ -1,5 +1,4 @@
 import { createApp } from 'vue'
-import './style.css'
 import App from './App.vue'
 import InstallPlugin from 'auto-typer-vue';
 import '../../src/styles/main.scss';
