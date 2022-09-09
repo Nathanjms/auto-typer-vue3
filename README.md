@@ -37,6 +37,8 @@ Then import the module and css file into your Vue component (see usage/example b
 | `repeat`                | `bool`                   | `true`  | Whether to repeat the text once all of them have been typed.                                                                                                              | N/A.                                                                                    |  |
 ## Usage/Example
 
+### Basic Example
+
 ```vue
 <script setup>
 import { AutoTyperVue } from "auto-typer-vue";
@@ -54,17 +56,77 @@ let text = [
   />
 </template>
 
-<script scoped>
+<style scoped>
 @import "auto-typer-vue3/dist/style.css";
+</style>
+```
+
+### Changing the cursor styling
+
+The cursor styling by default is the following:
+```scss
+.auto-typer-vue::after {
+  content: "";
+  position: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  margin-left: 1px;
+  animation: cursor-blink 1.5s steps(2) infinite;
+}
+
+@keyframes cursor-blink {
+  0% {
+    opacity: 0;
+  }
+}
+```
+
+This can be completely overridden, or certain parts can be altered by adding additional styles below the import of `style.css`, targetting the element `.auto-typer-vue::after`.
+
+#### Example: Changing the cursor colour
+
+```vue
+<style scoped>
+@import "auto-typer-vue3/dist/style.css";
+.auto-typer-vue::after {
+  border-color: rgba(0, 0, 0, 0.8);
+}
+</style>
+```
+
+You could also give an ID attribute to auto typer component, and then target the attribute. This helps if there is more than one on the page, and you want each to have different styling:
+
+```vue
+<script setup>
+import { AutoTyperVue } from "auto-typer-vue";
+
+let text = [
+  'This is a demo.',
+  'And this is another Demo!'
+];
 </script>
+
+<template>
+  <AutoTyperVue 
+    componentTag="h1"
+    id="main-auto-typer"
+    :text="text"
+  />
+</template>
+
+<style scoped>
+@import "auto-typer-vue3/dist/style.css";
+#main-auto-typer::after {
+  border-color: rgba(0, 0, 0, 0.8);
+}
+</style>
 ```
 
 ## Development
 
 There is a folder `playground` inside this repository which can be used as a basis for development. Clone the repo and run:
 
-1. `npm install`
-2. `npm run dev`
+1. `npm run dev:install`
+2. `npm run dev:run`
 
 To launch this folder with Vite.
 
@@ -72,15 +134,16 @@ The `App.vue` file can be modified to see changes in the browser, and navigating
 
 To test the packaged build, run:
 
-1. `npm pack`
-2. `npm run dev:pack`
+0. `npm install`
+1. `npm build:vite`
+2. `npm run dev:run-pack`
 
-This will run a dev server for the `/dist` folder instead of the normal one.
+This will run a dev server with the packaged version of `auto-typer-vue3`, instead of the normal one.
 
 ## Future Plans
 
 - ~Add custom styling options the the cursor.~
-    - Can be done with the style area already (I think... let me know if this needs further testing.) 
+    - Can be done with the style area already (example has been added to README)
 - Add a variable to allow a certain number of repeats, instead of just a boolean.
 - Handle whether to leave the final word on the screen once repeating has stopped.
 - ...any other suggestions will be considered, please leave an issue if you have any feature requests!

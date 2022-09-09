@@ -9,6 +9,7 @@ let text = ["This is a demo.", "And this is another Demo!"];
     <AutoTyperVue
       writtenBeginningWord="Hello!&nbsp;"
       componentTag="h1"
+      id="main-auto-typer"
       :text="text"
       :startDelay="1500"
       :typingDelay="150"
@@ -16,3 +17,9 @@ let text = ["This is a demo.", "And this is another Demo!"];
     />
   </div>
 </template>
+
+<style scoped>
+  #main-auto-typer::after {
+    border-color: rgba(0, 0, 0, 0.8);
+  }
+</style>
