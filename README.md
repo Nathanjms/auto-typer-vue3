@@ -93,6 +93,34 @@ This can be completely overridden, or certain parts can be altered by adding add
 </style>
 ```
 
+You could also give an ID attribute to auto typer component, and then target the attribute. This helps if there is more than one on the page, and you want each to have different styling:
+
+```vue
+<script setup>
+import { AutoTyperVue } from "auto-typer-vue";
+
+let text = [
+  'This is a demo.',
+  'And this is another Demo!'
+];
+</script>
+
+<template>
+  <AutoTyperVue 
+    componentTag="h1"
+    id="main-auto-typer"
+    :text="text"
+  />
+</template>
+
+<style scoped>
+@import "auto-typer-vue3/dist/style.css";
+#main-auto-typer::after {
+  border-color: rgba(0, 0, 0, 0.8);
+}
+</style>
+```
+
 ## Development
 
 There is a folder `playground` inside this repository which can be used as a basis for development. Clone the repo and run:
