@@ -97,7 +97,7 @@ This can be completely overridden, or certain parts can be altered by adding add
 
 There is a folder `playground` inside this repository which can be used as a basis for development. Clone the repo and run:
 
-1. `npm install:dev`
+1. `npm run dev:install`
 2. `npm run dev:run`
 
 To launch this folder with Vite.
