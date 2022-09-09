@@ -18,8 +18,4 @@ let text = ["This is a demo.", "And this is another Demo!"];
   </div>
 </template>
 
-<style scoped>
-  #main-auto-typer::after {
-    border-color: rgba(0, 0, 0, 0.8);
-  }
-</style>
+<style scoped></style>
