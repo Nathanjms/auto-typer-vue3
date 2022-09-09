@@ -143,7 +143,7 @@ This will run a dev server with the packaged version of `auto-typer-vue3`, inste
 ## Future Plans
 
 - ~Add custom styling options the the cursor.~
-    - Can be done with the style area already (I think... let me know if this needs further testing.) 
+    - Can be done with the style area already (example has been added to README)
 - Add a variable to allow a certain number of repeats, instead of just a boolean.
 - Handle whether to leave the final word on the screen once repeating has stopped.
 - ...any other suggestions will be considered, please leave an issue if you have any feature requests!
