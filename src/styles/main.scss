@@ -1,7 +1,8 @@
 .auto-typer-vue::after {
   content: "";
   position: inline-block;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid;
+  opacity: 0.5;
   margin-left: 1px;
   animation: cursor-blink 1.5s step-start infinite;
 }

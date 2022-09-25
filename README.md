@@ -68,27 +68,30 @@ The cursor styling by default is the following:
 .auto-typer-vue::after {
   content: "";
   position: inline-block;
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid;
+  opacity: 0.5;
   margin-left: 1px;
-  animation: cursor-blink 1.5s steps(2) infinite;
+  animation: cursor-blink 1.5s step-start infinite;
 }
 
 @keyframes cursor-blink {
-  0% {
+  50% {
     opacity: 0;
   }
 }
+
 ```
 
 This can be completely overridden, or certain parts can be altered by adding additional styles below the import of `style.css`, targetting the element `.auto-typer-vue::after`.
 
-#### Example: Changing the cursor colour
+#### Example: Changing the cursor colour/opacity
 
 ```vue
 <style scoped>
 @import "auto-typer-vue3/dist/style.css";
 .auto-typer-vue::after {
-  border-color: rgba(0, 0, 0, 0.8);
+  border-color: rgb(0, 0, 0);
+  opacity: 1;
 }
 </style>
 ```
@@ -99,7 +102,7 @@ You could also give an ID attribute to auto typer component, and then target the
 <script setup>
 import { AutoTyperVue } from "auto-typer-vue";
 
-let text = [
+let textArray = [
   'This is a demo.',
   'And this is another Demo!'
 ];
@@ -109,14 +112,15 @@ let text = [
   <AutoTyperVue 
     componentTag="h1"
     id="main-auto-typer"
-    :text="text"
+    :text="textArray"
   />
 </template>
 
 <style scoped>
 @import "auto-typer-vue3/dist/style.css";
 #main-auto-typer::after {
-  border-color: rgba(0, 0, 0, 0.8);
+  border-color: rgb(0, 0, 0);
+  opacity: 0.8;
 }
 </style>
 ```
