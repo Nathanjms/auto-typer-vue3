@@ -1,6 +1,6 @@
 {
   "name": "auto-typer-vue3",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple Autotyper for Vue 3, with some customisation options.",
   "keywords": [
     "vue3",
