@@ -7,7 +7,7 @@ let text = ["This is a demo.", "And this is another Demo!"];
 <template>
   <div class="grid place-items-center justify-center min-h-screen bg-slate-700">
     <AutoTyperVue
-      writtenBeginningWord="Hello!&nbsp;"
+      :writtenBeginningWord="'Hello!\xa0'"
       componentTag="h1"
       id="main-auto-typer"
       :text="text"
