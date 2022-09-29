@@ -47,7 +47,7 @@ export default defineComponent({
     },
     typingDelay: {
       type: Number,
-      default: 300,
+      default: 200,
       validator(value) {
         return value >= 0;
       },
@@ -97,6 +97,10 @@ export default defineComponent({
       } else {
         this.textFeed = [...this.text];
       }
+      this.textFeed = this.textFeed.map(function (x) {
+        // Convert all spaces to javascript space to stop cursor 'jumping'
+        return x.replace(/\s/g, "\xa0");
+      });
       await this.delay(this.startDelay);
       await this.writeBeginningWord();
       this.autoType();
@@ -110,7 +114,6 @@ export default defineComponent({
         this.typedBeginningWord += char;
         await this.delay(this.typingDelay);
       }
-      await this.delay(this.betweenWordDelay);
     },
     async autoType() {
       for (let currentWord of [...this.textFeed]) {
