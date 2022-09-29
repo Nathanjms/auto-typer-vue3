@@ -110,7 +110,11 @@ export default defineComponent({
         // No word to write, stop here!
         return;
       }
-      for (let char of [...this.writtenBeginningWord]) {
+      let spacedWrittenBeginningWord = this.writtenBeginningWord.replace(
+        /\s/g,
+        "\xa0"
+      );
+      for (let char of [...spacedWrittenBeginningWord]) {
         this.typedBeginningWord += char;
         await this.delay(this.typingDelay);
       }
