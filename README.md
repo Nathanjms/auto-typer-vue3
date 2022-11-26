@@ -71,10 +71,10 @@ The cursor styling by default is the following:
   border: 1px solid;
   opacity: 0.5;
   margin-left: 1px;
-  animation: cursor-blink 1.5s step-start infinite;
+  animation: atv-cursor-blink 1.5s step-start infinite;
 }
 
-@keyframes cursor-blink {
+@keyframes atv-cursor-blink {
   50% {
     opacity: 0;
   }

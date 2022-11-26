@@ -26,9 +26,7 @@ export default defineComponent({
         if (typeof value === "string") {
           return value.length > 0;
         }
-        return value.every(
-          (item) => typeof item === "string" && item.length > 0
-        );
+        return value.every((item) => typeof item === "string" && item.length > 0);
       },
     },
     startDelay: {
@@ -97,10 +95,6 @@ export default defineComponent({
       } else {
         this.textFeed = [...this.text];
       }
-      this.textFeed = this.textFeed.map(function (x) {
-        // Convert all spaces to javascript space to stop cursor 'jumping'
-        return x.replace(/\s/g, "\xa0");
-      });
       await this.delay(this.startDelay);
       await this.writeBeginningWord();
       this.autoType();
@@ -110,11 +104,7 @@ export default defineComponent({
         // No word to write, stop here!
         return;
       }
-      let spacedWrittenBeginningWord = this.writtenBeginningWord.replace(
-        /\s/g,
-        "\xa0"
-      );
-      for (let char of [...spacedWrittenBeginningWord]) {
+      for (let char of [...this.writtenBeginningWord]) {
         this.typedBeginningWord += char;
         await this.delay(this.typingDelay);
       }
@@ -147,7 +137,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <component class="auto-typer-vue" :is="componentTag"
-    >{{ beginningWord }}{{ typedBeginningWord }}{{ currentText }}
+  <component class="auto-typer-vue" :is="componentTag">
+    {{ beginningWord }}{{ typedBeginningWord }}{{ currentText }}<span class="cursor"></span>
   </component>
 </template>
