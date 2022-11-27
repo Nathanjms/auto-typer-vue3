@@ -9,10 +9,8 @@ node_modules
 .idea/
 *.log
 /coverage
-package-lock.json
-pnpm-lock.yaml
-yarn.lock
 
+playground/package-lock.json
 playground/dist
 
 __unconfig_vite.config.ts
