@@ -1,5 +1,15 @@
 <script>
 import { defineComponent } from "vue";
+
+/**
+ * Delay by the given amount of milliseconds
+ * @param {number} ms
+ * @returns {Promise<void>}
+ */
+async function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 export default defineComponent({
   name: "AutoTyperVue",
   emits: ["finished"],
@@ -91,19 +101,22 @@ export default defineComponent({
     }
   },
   methods: {
-    delay(ms) {
-      return new Promise((resolve) => setTimeout(resolve, ms));
-    },
+    /**
+     * Start the auto typing
+     */
     async begin() {
       if (typeof this.text === "string") {
         this.textFeed = [this.text];
       } else {
         this.textFeed = [...this.text];
       }
-      await this.delay(this.startDelay);
+      await delay(this.startDelay);
       await this.writeBeginningWord();
       this.autoType();
     },
+    /**
+     * Write the beginning word, if one is provided
+     */
     async writeBeginningWord() {
       if (!this.writtenBeginningWord.length) {
         // No word to write, stop here!
@@ -111,13 +124,16 @@ export default defineComponent({
       }
       for (let char of [...this.writtenBeginningWord]) {
         this.typedBeginningWord += char;
-        await this.delay(this.typingDelay);
+        await delay(this.typingDelay);
       }
     },
+    /**
+     * Auto type the text
+     */
     async autoType() {
       for (let currentWord of this.textFeed) {
         await this.writeWord(currentWord);
-        await this.delay(this.waitBeforeDeleteDelay);
+        await delay(this.waitBeforeDeleteDelay);
         // If we are on the last word, we don't want to delete it if we are not repeating (unless removeAfterRepeat is true)
         if (
           !this.repeat &&
@@ -127,7 +143,7 @@ export default defineComponent({
           break;
         }
         await this.removeWord(currentWord);
-        await this.delay(this.betweenWordDelay);
+        await delay(this.betweenWordDelay);
       }
       if (this.repeat) {
         this.autoType();
@@ -135,16 +151,24 @@ export default defineComponent({
         this.$emit("finished");
       }
     },
+    /**
+     * Write a word on the screen
+     * @param {string} currentWord
+     */
     async writeWord(currentWord) {
       for (let char of [...currentWord]) {
         this.currentText += char;
-        await this.delay(this.typingDelay);
+        await delay(this.typingDelay);
       }
     },
+    /**
+     * Remove a word from the screen
+     * @param {string} currentWord
+     */
     async removeWord(currentWord) {
       for (let i = 0; i < currentWord.length; i++) {
         this.currentText = this.currentText.slice(0, -1);
-        await this.delay(this.deletingDelay);
+        await delay(this.deletingDelay);
       }
     },
   },
