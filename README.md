@@ -66,7 +66,7 @@ let text = [
 </style>
 ```
 
-### Type out word, then stop example
+### Type out word, then stop
 
 ```vue
 <script setup>
