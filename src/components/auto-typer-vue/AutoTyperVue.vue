@@ -73,6 +73,10 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+    removeAfterRepeat: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -111,9 +115,17 @@ export default defineComponent({
       }
     },
     async autoType() {
-      for (let currentWord of [...this.textFeed]) {
+      for (let currentWord of this.textFeed) {
         await this.writeWord(currentWord);
         await this.delay(this.waitBeforeDeleteDelay);
+        // If we are on the last word, we don't want to delete it if we are not repeating (unless removeAfterRepeat is true)
+        if (
+          !this.repeat &&
+          !this.removeAfterRepeat &&
+          this.textFeed.indexOf(currentWord) === this.textFeed.length - 1
+        ) {
+          break;
+        }
         await this.removeWord(currentWord);
         await this.delay(this.betweenWordDelay);
       }
@@ -140,7 +152,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <component class="auto-typer-vue" :is="componentTag">
-    {{ beginningWord }}{{ typedBeginningWord }}{{ currentText }}<span class="cursor"></span>
+  <component class="auto-typer-vue blink" :is="componentTag">
+    {{ beginningWord }}{{ typedBeginningWord }}{{ currentText }}
   </component>
 </template>

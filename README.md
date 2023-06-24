@@ -34,7 +34,8 @@ Then import the module and css file into your Vue component (see usage/example b
 | `deletingDelay`         | `number`                 | `100`   | Time (ms) between each character is deleted after the text has been typed.                                 | Number >= 0.                                                                            |
 | `waitBeforeDeleteDelay` | `number`                 | `500`   | Time (ms) after the text has been typed before deleting it begins.                                         | Number >= 0.                                                                            |
 | `startByDefault`        | `bool`                   | `true`  | Whether to start the auto-typer by default. If set to false, the `begin()` method must be called manually. | Number >= 0.                                                                            |
-| `repeat`                | `bool`                   | `true`  | Whether to repeat the text once all of them have been typed.                                               | N/A.                                                                                    |  |
+| `repeat`                | `bool`                   | `true`  | Whether to repeat the text once all of them have been typed.                                               | N/A.                                                                                    |
+| `removeAfterRepeat`     | `bool`                   | `false` | If repeat is false, whether to remove the final word.                                                      | N/A.                                                                                    |
 
 ## Emits
 
@@ -64,6 +65,25 @@ let text = [
 @import "auto-typer-vue3/dist/style.css";
 </style>
 ```
+
+### Type out word, then stop example
+
+```vue
+<script setup>
+import { AutoTyperVue } from "auto-typer-vue";
+</script>
+
+<template>
+  <AutoTyperVue
+    componentTag="h1"
+    text="This will remain on the screen after being typed!"
+    :repeat="false"
+  />
+</template>
+
+<style scoped>
+@import "auto-typer-vue3/dist/style.css";
+</style>
 
 ### Changing the cursor styling
 
