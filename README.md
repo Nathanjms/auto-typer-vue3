@@ -30,11 +30,16 @@ Then import the module and css file into your Vue component (see usage/example b
 | `text`                  | `string \|array<string>` | `''`    | Either a string to be auto-typed, or an array of strings to be auto-typed.                                 |                                                                                         |
 | `startDelay`            | `number`                 | `500`   | Time (ms) before the auto-typer begins.                                                                    | Number >= 0.                                                                            |
 | `betweenWordDelay`      | `number`                 | `500`   | Time (ms) before the next `text` string is typed.                                                          | Number >= 0.                                                                            |
-| `typingDelay`           | `number`                 | `300`   | Time (ms) between each character is typed.                                                                 | Number >= 0.                                                                            |
+| `typingDelay`           | `number`                 | `150`   | Time (ms) between each character is typed (lower means faster typing).                                     | Number >= 0.                                                                            |
 | `deletingDelay`         | `number`                 | `100`   | Time (ms) between each character is deleted after the text has been typed.                                 | Number >= 0.                                                                            |
 | `waitBeforeDeleteDelay` | `number`                 | `500`   | Time (ms) after the text has been typed before deleting it begins.                                         | Number >= 0.                                                                            |
 | `startByDefault`        | `bool`                   | `true`  | Whether to start the auto-typer by default. If set to false, the `begin()` method must be called manually. | Number >= 0.                                                                            |
-| `repeat`                | `bool`                   | `true`  | Whether to repeat the text once all of them have been typed.                                               | N/A.                                                                                    |  |
+| `repeat`                | `bool`                   | `true`  | Whether to repeat the text once all of them have been typed.                                               | N/A.                                                                                    |
+| `removeAfterRepeat`     | `bool`                   | `false` | If repeat is false, whether to remove the final word.                                                      | N/A.                                                                                    |
+
+## Emits
+
+- `finished` - Emitted once the auto-typer has finished typing (only applicable if `repeat` is false).
 ## Usage/Example
 
 ### Basic Example
@@ -61,58 +66,58 @@ let text = [
 </style>
 ```
 
-### Changing the cursor styling
+### Type out word, then stop example
 
-The cursor styling by default is the following:
-```scss
-.auto-typer-vue::after {
-  content: "";
-  position: inline-block;
-  border: 1px solid;
-  opacity: 0.5;
-  margin-left: 1px;
-  animation: atv-cursor-blink 1.5s step-start infinite;
-}
+```vue
+<script setup>
+import { AutoTyperVue } from "auto-typer-vue";
+</script>
 
-@keyframes atv-cursor-blink {
-  50% {
-    opacity: 0;
-  }
-}
+<template>
+  <AutoTyperVue
+    componentTag="h1"
+    text="This will remain on the screen after being typed!"
+    :repeat="false"
+  />
+</template>
 
+<style scoped>
+@import "auto-typer-vue3/dist/style.css";
+</style>
 ```
 
-This can be completely overridden, or certain parts can be altered by adding additional styles below the import of `style.css`, targetting the element `.auto-typer-vue::after`.
+### Changing the cursor styling
+
+The cursor styling can be completely overridden, or certain parts can be altered by adding additional styles below the import of `style.css`, targetting the element `.auto-typer-vue::after`.
 
 #### Example: Changing the cursor colour/opacity
+
+Note: You may need to use `!important` to override the default styling if you use this approach.
 
 ```vue
 <style scoped>
 @import "auto-typer-vue3/dist/style.css";
 .auto-typer-vue::after {
-  border-color: rgb(0, 0, 0);
-  opacity: 1;
+  border-color: rgb(0, 0, 0) !important;
+  opacity: 1 !important;
 }
 </style>
 ```
 
 You could also give an ID attribute to auto typer component, and then target the attribute. This helps if there is more than one on the page, and you want each to have different styling:
 
+You will not need to use `!important` if you use this approach.
+
 ```vue
 <script setup>
 import { AutoTyperVue } from "auto-typer-vue";
-
-let textArray = [
-  'This is a demo.',
-  'And this is another Demo!'
-];
 </script>
 
 <template>
   <AutoTyperVue 
     componentTag="h1"
     id="main-auto-typer"
-    :text="textArray"
+    :text="['This is a demo.', 'And this is another Demo!']"
   />
 </template>
 
