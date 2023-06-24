@@ -35,6 +35,10 @@ Then import the module and css file into your Vue component (see usage/example b
 | `waitBeforeDeleteDelay` | `number`                 | `500`   | Time (ms) after the text has been typed before deleting it begins.                                         | Number >= 0.                                                                            |
 | `startByDefault`        | `bool`                   | `true`  | Whether to start the auto-typer by default. If set to false, the `begin()` method must be called manually. | Number >= 0.                                                                            |
 | `repeat`                | `bool`                   | `true`  | Whether to repeat the text once all of them have been typed.                                               | N/A.                                                                                    |  |
+
+## Emits
+
+- `finished` - Emitted once the auto-typer has finished typing (only applicable if `repeat` is false).
 ## Usage/Example
 
 ### Basic Example

@@ -2,6 +2,7 @@
 import { defineComponent } from "vue";
 export default defineComponent({
   name: "AutoTyperVue",
+  emits: ["finished"],
   props: {
     componentTag: {
       type: String,
@@ -118,6 +119,8 @@ export default defineComponent({
       }
       if (this.repeat) {
         this.autoType();
+      } else {
+        this.$emit("finished");
       }
     },
     async writeWord(currentWord) {
