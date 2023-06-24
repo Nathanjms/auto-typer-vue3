@@ -45,7 +45,7 @@ export default defineComponent({
     },
     typingDelay: {
       type: Number,
-      default: 200,
+      default: 150,
       validator(value) {
         return value >= 0;
       },
