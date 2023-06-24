@@ -84,59 +84,40 @@ import { AutoTyperVue } from "auto-typer-vue";
 <style scoped>
 @import "auto-typer-vue3/dist/style.css";
 </style>
+```
 
 ### Changing the cursor styling
 
-The cursor styling by default is the following:
-```scss
-.auto-typer-vue::after {
-  content: "";
-  position: inline-block;
-  border: 1px solid;
-  opacity: 0.5;
-  margin-left: 1px;
-  animation: atv-cursor-blink 1.5s step-start infinite;
-}
-
-@keyframes atv-cursor-blink {
-  50% {
-    opacity: 0;
-  }
-}
-
-```
-
-This can be completely overridden, or certain parts can be altered by adding additional styles below the import of `style.css`, targetting the element `.auto-typer-vue::after`.
+The cursor styling can be completely overridden, or certain parts can be altered by adding additional styles below the import of `style.css`, targetting the element `.auto-typer-vue::after`.
 
 #### Example: Changing the cursor colour/opacity
+
+Note: You may need to use `!important` to override the default styling if you use this approach.
 
 ```vue
 <style scoped>
 @import "auto-typer-vue3/dist/style.css";
 .auto-typer-vue::after {
-  border-color: rgb(0, 0, 0);
-  opacity: 1;
+  border-color: rgb(0, 0, 0) !important;
+  opacity: 1 !important;
 }
 </style>
 ```
 
 You could also give an ID attribute to auto typer component, and then target the attribute. This helps if there is more than one on the page, and you want each to have different styling:
 
+You will not need to use `!important` if you use this approach.
+
 ```vue
 <script setup>
 import { AutoTyperVue } from "auto-typer-vue";
-
-let textArray = [
-  'This is a demo.',
-  'And this is another Demo!'
-];
 </script>
 
 <template>
   <AutoTyperVue 
     componentTag="h1"
     id="main-auto-typer"
-    :text="textArray"
+    :text="['This is a demo.', 'And this is another Demo!']"
   />
 </template>
 
