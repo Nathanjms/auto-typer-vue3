@@ -44,7 +44,7 @@ Then import the module and css file into your Vue component (see usage/example b
 
 ```vue
 <script setup>
-import { AutoTyperVue } from "auto-typer-vue";
+import { AutoTyperVue } from "auto-typer-vue3";
 
 let text = [
   'This is a demo.',
@@ -68,7 +68,7 @@ let text = [
 
 ```vue
 <script setup>
-import { AutoTyperVue } from "auto-typer-vue";
+import { AutoTyperVue } from "auto-typer-vue3";
 </script>
 
 <template>
@@ -129,7 +129,7 @@ You will not need to use `!important` if you use this approach.
 
 ```vue
 <script setup>
-import { AutoTyperVue } from "auto-typer-vue";
+import { AutoTyperVue } from "auto-typer-vue3";
 </script>
 
 <template>
