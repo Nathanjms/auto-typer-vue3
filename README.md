@@ -163,7 +163,7 @@ The `App.vue` file can be modified to see changes in the browser, and navigating
 To test the packaged build, run:
 
 0. `npm install`
-1. `npm build:vite`
+1. `npm run build:vite`
 2. `npm run dev:run-pack`
 
 This will run a dev server with the packaged version of `auto-typer-vue3`, instead of the normal one.
