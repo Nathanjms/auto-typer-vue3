@@ -213,12 +213,20 @@ This will run a dev server with the packaged version of `auto-typer-vue3`, inste
 
 ## Publishing
 
+Publishing is intentionally performed locally rather than through GitHub Actions. This avoids storing a long-lived npm publishing token in the repository settings.
+
+For a new release:
+
 1. Commit the package changes so the worktree is clean.
 2. Run `npm version patch`, `npm version minor`, or `npm version major` as appropriate.
-3. Push the commit and tag with `git push --follow-tags`.
-4. Create a GitHub release for that tag.
+3. Run `npm login`, then confirm the expected account with `npm whoami`.
+4. Run `npm ci`.
+5. Run `npm publish`. The `prepublishOnly` script runs the tests and build before uploading.
+6. Run `npm logout` to revoke the local npm session.
+7. Push the commit and tag with `git push --follow-tags`.
+8. Create a GitHub release for that tag.
 
-The release workflow runs `npm ci` and `npm publish`; publishing runs the tests and build first. It requires an npm access token in the repository's `NPM_TOKEN` Actions secret.
+Never commit npm credentials or an `.npmrc` file containing a token.
 
 ## Future Plans
 
