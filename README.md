@@ -26,6 +26,7 @@ A simple auto-typer, written in Vue3.
   - [Styling Customisation: changing the cursor styling](#styling-customisation-changing-the-cursor-styling)
     - [Example: Changing the cursor colour/opacity](#example-changing-the-cursor-colouropacity)
   - [Contributing](#contributing)
+  - [Publishing](#publishing)
   - [Future Plans](#future-plans)
 
 ## Installation
@@ -167,6 +168,15 @@ To test the packaged build, run:
 2. `npm run dev:run-pack`
 
 This will run a dev server with the packaged version of `auto-typer-vue3`, instead of the normal one.
+
+## Publishing
+
+1. Commit the package changes so the worktree is clean.
+2. Run `npm version patch`, `npm version minor`, or `npm version major` as appropriate.
+3. Push the commit and tag with `git push --follow-tags`.
+4. Create a GitHub release for that tag.
+
+The release workflow runs `npm ci` and `npm publish`. It requires an npm access token in the repository's `NPM_TOKEN` Actions secret.
 
 ## Future Plans
 

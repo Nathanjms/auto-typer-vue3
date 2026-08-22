@@ -1,12 +1,12 @@
 import dts from 'vite-plugin-dts';
-import path from 'path';
+import path from 'node:path';
 import Vue from '@vitejs/plugin-vue';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
   resolve: {
     alias: {
-      'auto-typer-vue': path.resolve(__dirname, './src/index.ts'),
+      'auto-typer-vue': path.resolve(import.meta.dirname, './src/index.ts'),
     },
   },
   build: {
@@ -17,7 +17,7 @@ export default defineConfig({
         if (type === 'cjs') return 'index.js';
         return 'index.js';
       },
-      entry: path.resolve(__dirname, 'src/index.ts'),
+      entry: path.resolve(import.meta.dirname, 'src/index.ts'),
       formats: ['es', 'cjs'],
     },
     // sourcemap: true,
@@ -34,10 +34,7 @@ export default defineConfig({
     // https://www.npmjs.com/package/vite-plugin-dts
     dts({
       include: 'src',
-      rollupTypes: true,
-      afterBuild: () => {
-        // do something else
-      },
+      bundleTypes: true,
     }),
   ],
 });

@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "target": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "Bundler",
     "useDefineForClassFields": true,
     "module": "ESNext",
     "strict": true,
@@ -13,7 +13,7 @@
     "esModuleInterop": true,
     "lib": ["ESNext", "DOM"],
     "skipLibCheck": true,
-    "types": ["../global"],
+    "types": ["node", "../global"],
     "paths": {
       "@/*": ["src/*"],
       "auto-typer-vue": ["../src"],
