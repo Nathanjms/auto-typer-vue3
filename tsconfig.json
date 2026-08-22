@@ -36,6 +36,7 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.vue",
+    "tests/**/*.ts",
     "vite.config.mts"
   ],
   "exclude": [

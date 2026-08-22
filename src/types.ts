@@ -1,13 +1,19 @@
+export type AutoTyperComponentTag = "span" | "p" | "a" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+
 export interface VueAutoTyper {
-  componentTag?: String;
-  customCursorStyling?: Object;
-  beginningWord?: String;
-  text: String | Array<String>;
-  startDelay?: Number;
-  betweenWordDelay?: Number;
-  typingDelay?: Number;
-  deletingDelay?: Number;
-  waitBeforeDeleteDelay?: Number;
-  startByDefault?: Boolean;
-  repeat?: Boolean;
+  componentTag?: AutoTyperComponentTag;
+  beginningWord?: string;
+  writtenBeginningWord?: string;
+  text: string | string[];
+  startDelay?: number;
+  betweenWordDelay?: number;
+  typingDelay?: number;
+  deletingDelay?: number;
+  waitBeforeDeleteDelay?: number;
+  startByDefault?: boolean;
+  repeat?: boolean;
+  removeAfterRepeat?: boolean;
+  pauseOnInteraction?: boolean;
+  respectReducedMotion?: boolean;
+  ariaLabel?: string;
 }
